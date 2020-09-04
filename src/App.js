@@ -69,9 +69,9 @@ class App extends Component {
                 </h1>
                 )
               }
-            }  */}
+            } 
 
-          />
+          /> */}
         </Switch>
       </div>
     );
