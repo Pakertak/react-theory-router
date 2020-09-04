@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import './App.scss'
+import { Route, NavLink } from 'react-router-dom'
 import About from './About/About'
 import Cars from './Cars/Cars'
 
@@ -11,18 +12,36 @@ class App extends Component {
         <nav className="nav">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <NavLink 
+                to="/" 
+                exact 
+                activeClassName={'wfm-active'}
+              >Home</NavLink>
             </li>
             <li>
-              <a href="/about">About</a>
+              <NavLink 
+                to="/about"
+                activeStyle={{
+                  color: 'blue'}}
+              >About</NavLink>
+            </li>
+            <li>
+              <NavLink to={{
+                pathname: '/cars',
+                search: '?a=1&b=2',
+                hash: 'wfm-hash'
+              }}>Cars</NavLink>
             </li>
           </ul>
         </nav>
 
         <hr/>
-        <About />
 
-        <Cars />
+        <Route path={'/'} exact render={() => {
+          return <h1>Home page</h1>
+        }} />
+        <Route path={'/about'}  component={About}/>
+        <Route path={'/cars'}  component={Cars} />
       </div>
     );
   }
